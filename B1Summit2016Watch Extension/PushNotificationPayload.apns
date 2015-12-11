@@ -1,0 +1,9 @@
+{
+    "aps": {
+        "alert": {
+            "body": "New approval request for sales order draft 148",
+        },
+        "category": "myCategory"
+    },
+  
+}

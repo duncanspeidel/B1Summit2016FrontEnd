@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="9019"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="B1Summit2016Watch_Extension">
+                    <items>
+                        <label alignment="left" text="Customer: Lots of Text here " id="qv5-jS-lk0"/>
+                        <label alignment="left" text="Amount 99999.99" id="49G-Yf-Ep1"/>
+                        <label alignment="left" text="Discount: 100" id="vc2-ZG-4RE"/>
+                        <label alignment="left" text="Balance: 99999999" id="eAb-gR-U4Z"/>
+                        <label alignment="left" text="From: Duncan Speidel" id="l2u-KD-Pqg"/>
+                        <button width="134" alignment="left" title="Approve" id="Lwp-hD-gWL">
+                            <color key="titleColor" red="0.092364746684450161" green="1" blue="0.074323953572419055" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="PressApprove:" destination="AgC-eL-Hgc" id="JBW-Xh-ySp"/>
+                            </connections>
+                        </button>
+                        <button width="1" alignment="left" title="Reject" id="1qS-zv-p2N">
+                            <color key="backgroundColor" red="1" green="0.15865472489999999" blue="0.1557098284" alpha="1" colorSpace="calibratedRGB"/>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="CardNameLabel" destination="qv5-jS-lk0" id="1f5-OH-1z8"/>
+                        <outlet property="CurrentAccountBalanceLabel" destination="eAb-gR-U4Z" id="WLf-zQ-fc7"/>
+                        <outlet property="DiscountPerentageLabel" destination="vc2-ZG-4RE" id="2DS-06-DQi"/>
+                        <outlet property="DocTotalLabel" destination="49G-Yf-Ep1" id="Ahe-zz-uKr"/>
+                        <outlet property="SalesPersonLabel" destination="l2u-KD-Pqg" id="n9t-7J-HAb"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="220" y="344.75"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="AEw-b0-oYE">
+            <objects>
+                <notificationController id="YCC-NB-fut">
+                    <items>
+                        <label alignment="left" text="Alert Label" id="IdU-wH-bcW"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
+                        <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="220" y="643"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="ZPc-GJ-vnh">
+            <objects>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="B1Summit2016Watch" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="468" y="643"/>
+        </scene>
+    </scenes>
+</document>
