@@ -14,6 +14,20 @@
 		53539B361BBBD0A200626562 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53539B341BBBD0A200626562 /* LaunchScreen.storyboard */; };
 		53539B411BBBD0A200626562 /* B1Summit2016Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53539B401BBBD0A200626562 /* B1Summit2016Tests.swift */; };
 		53539B4C1BBBD0A200626562 /* B1Summit2016UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53539B4B1BBBD0A200626562 /* B1Summit2016UITests.swift */; };
+		945751FB1BEBC28800D9817A /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 945751F91BEBC28800D9817A /* Interface.storyboard */; };
+		945751FD1BEBC28800D9817A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 945751FC1BEBC28800D9817A /* Assets.xcassets */; };
+		945752041BEBC28800D9817A /* B1Summit2016Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 945752031BEBC28800D9817A /* B1Summit2016Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		9457520B1BEBC28800D9817A /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9457520A1BEBC28800D9817A /* InterfaceController.swift */; };
+		9457520D1BEBC28800D9817A /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9457520C1BEBC28800D9817A /* ExtensionDelegate.swift */; };
+		9457520F1BEBC28800D9817A /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9457520E1BEBC28800D9817A /* NotificationController.swift */; };
+		945752111BEBC28800D9817A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 945752101BEBC28800D9817A /* Assets.xcassets */; };
+		945752151BEBC28800D9817A /* B1Summit2016Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 945751F71BEBC28800D9817A /* B1Summit2016Watch.app */; };
+		945752841BEBCB0600D9817A /* sap_business_one_app_58.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 945752831BEBCB0600D9817A /* sap_business_one_app_58.jpg */; };
+		94A1208A1BF249BD002911C6 /* B1Summit_2016_demo_app_dev-4.mobileprovision in Resources */ = {isa = PBXBuildFile; fileRef = 94A120891BF249BD002911C6 /* B1Summit_2016_demo_app_dev-4.mobileprovision */; };
+		94A1208B1BF249BD002911C6 /* B1Summit_2016_demo_app_dev-4.mobileprovision in Resources */ = {isa = PBXBuildFile; fileRef = 94A120891BF249BD002911C6 /* B1Summit_2016_demo_app_dev-4.mobileprovision */; };
+		94A1208C1BF249BD002911C6 /* B1Summit_2016_demo_app_dev-4.mobileprovision in Resources */ = {isa = PBXBuildFile; fileRef = 94A120891BF249BD002911C6 /* B1Summit_2016_demo_app_dev-4.mobileprovision */; };
+		94A1208D1BF249BD002911C6 /* B1Summit_2016_demo_app_dev-4.mobileprovision in Resources */ = {isa = PBXBuildFile; fileRef = 94A120891BF249BD002911C6 /* B1Summit_2016_demo_app_dev-4.mobileprovision */; };
+		94A1208E1BF249BD002911C6 /* B1Summit_2016_demo_app_dev-4.mobileprovision in Resources */ = {isa = PBXBuildFile; fileRef = 94A120891BF249BD002911C6 /* B1Summit_2016_demo_app_dev-4.mobileprovision */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,7 +45,46 @@
 			remoteGlobalIDString = 53539B271BBBD0A100626562;
 			remoteInfo = B1Summit2016;
 		};
+		945752051BEBC28800D9817A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 53539B201BBBD0A100626562 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 945752021BEBC28800D9817A;
+			remoteInfo = "B1Summit2016Watch Extension";
+		};
+		945752131BEBC28800D9817A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 53539B201BBBD0A100626562 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 945751F61BEBC28800D9817A;
+			remoteInfo = B1Summit2016Watch;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9457521B1BEBC28800D9817A /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				945752041BEBC28800D9817A /* B1Summit2016Watch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94DA6D4D1BEAF7FA00CDA4A2 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				945752151BEBC28800D9817A /* B1Summit2016Watch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		53539B281BBBD0A200626562 /* B1Summit2016.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = B1Summit2016.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,6 +100,19 @@
 		53539B471BBBD0A200626562 /* B1Summit2016UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = B1Summit2016UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		53539B4B1BBBD0A200626562 /* B1Summit2016UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = B1Summit2016UITests.swift; sourceTree = "<group>"; };
 		53539B4D1BBBD0A200626562 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		945751F71BEBC28800D9817A /* B1Summit2016Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = B1Summit2016Watch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		945751FA1BEBC28800D9817A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		945751FC1BEBC28800D9817A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		945751FE1BEBC28800D9817A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		945752031BEBC28800D9817A /* B1Summit2016Watch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "B1Summit2016Watch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		945752091BEBC28800D9817A /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		9457520A1BEBC28800D9817A /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		9457520C1BEBC28800D9817A /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		9457520E1BEBC28800D9817A /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		945752101BEBC28800D9817A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		945752121BEBC28800D9817A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		945752831BEBCB0600D9817A /* sap_business_one_app_58.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = sap_business_one_app_58.jpg; path = "../../../../Watch tests/LearningWatch/B1Summit2016_watch_Version/sap_business_one_app_58.jpg"; sourceTree = "<group>"; };
+		94A120891BF249BD002911C6 /* B1Summit_2016_demo_app_dev-4.mobileprovision */ = {isa = PBXFileReference; lastKnownFileType = file; name = "B1Summit_2016_demo_app_dev-4.mobileprovision"; path = "../../../../Downloads/B1Summit_2016_demo_app_dev-4.mobileprovision"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +137,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		945752001BEBC28800D9817A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -80,7 +153,10 @@
 				53539B2A1BBBD0A200626562 /* B1Summit2016 */,
 				53539B3F1BBBD0A200626562 /* B1Summit2016Tests */,
 				53539B4A1BBBD0A200626562 /* B1Summit2016UITests */,
+				945751F81BEBC28800D9817A /* B1Summit2016Watch */,
+				945752071BEBC28800D9817A /* B1Summit2016Watch Extension */,
 				53539B291BBBD0A200626562 /* Products */,
+				94A120891BF249BD002911C6 /* B1Summit_2016_demo_app_dev-4.mobileprovision */,
 			);
 			sourceTree = "<group>";
 		};
@@ -90,6 +166,8 @@
 				53539B281BBBD0A200626562 /* B1Summit2016.app */,
 				53539B3C1BBBD0A200626562 /* B1Summit2016Tests.xctest */,
 				53539B471BBBD0A200626562 /* B1Summit2016UITests.xctest */,
+				945751F71BEBC28800D9817A /* B1Summit2016Watch.app */,
+				945752031BEBC28800D9817A /* B1Summit2016Watch Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -125,6 +203,38 @@
 			path = B1Summit2016UITests;
 			sourceTree = "<group>";
 		};
+		945751F81BEBC28800D9817A /* B1Summit2016Watch */ = {
+			isa = PBXGroup;
+			children = (
+				945751F91BEBC28800D9817A /* Interface.storyboard */,
+				945751FC1BEBC28800D9817A /* Assets.xcassets */,
+				945751FE1BEBC28800D9817A /* Info.plist */,
+			);
+			path = B1Summit2016Watch;
+			sourceTree = "<group>";
+		};
+		945752071BEBC28800D9817A /* B1Summit2016Watch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				9457520A1BEBC28800D9817A /* InterfaceController.swift */,
+				9457520C1BEBC28800D9817A /* ExtensionDelegate.swift */,
+				9457520E1BEBC28800D9817A /* NotificationController.swift */,
+				945752101BEBC28800D9817A /* Assets.xcassets */,
+				945752121BEBC28800D9817A /* Info.plist */,
+				945752081BEBC28800D9817A /* Supporting Files */,
+			);
+			path = "B1Summit2016Watch Extension";
+			sourceTree = "<group>";
+		};
+		945752081BEBC28800D9817A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				945752831BEBCB0600D9817A /* sap_business_one_app_58.jpg */,
+				945752091BEBC28800D9817A /* PushNotificationPayload.apns */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,10 +245,12 @@
 				53539B241BBBD0A100626562 /* Sources */,
 				53539B251BBBD0A100626562 /* Frameworks */,
 				53539B261BBBD0A100626562 /* Resources */,
+				94DA6D4D1BEAF7FA00CDA4A2 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				945752141BEBC28800D9817A /* PBXTargetDependency */,
 			);
 			name = B1Summit2016;
 			productName = B1Summit2016;
@@ -181,17 +293,61 @@
 			productReference = 53539B471BBBD0A200626562 /* B1Summit2016UITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		945751F61BEBC28800D9817A /* B1Summit2016Watch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9457521C1BEBC28800D9817A /* Build configuration list for PBXNativeTarget "B1Summit2016Watch" */;
+			buildPhases = (
+				945751F51BEBC28800D9817A /* Resources */,
+				9457521B1BEBC28800D9817A /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				945752061BEBC28800D9817A /* PBXTargetDependency */,
+			);
+			name = B1Summit2016Watch;
+			productName = B1Summit2016Watch;
+			productReference = 945751F71BEBC28800D9817A /* B1Summit2016Watch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		945752021BEBC28800D9817A /* B1Summit2016Watch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9457521A1BEBC28800D9817A /* Build configuration list for PBXNativeTarget "B1Summit2016Watch Extension" */;
+			buildPhases = (
+				945751FF1BEBC28800D9817A /* Sources */,
+				945752001BEBC28800D9817A /* Frameworks */,
+				945752011BEBC28800D9817A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "B1Summit2016Watch Extension";
+			productName = "B1Summit2016Watch Extension";
+			productReference = 945752031BEBC28800D9817A /* B1Summit2016Watch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		53539B201BBBD0A100626562 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Li, Yatsea";
 				TargetAttributes = {
 					53539B271BBBD0A100626562 = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = ZK2MG3TWVQ;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 0;
+							};
+						};
 					};
 					53539B3B1BBBD0A200626562 = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -200,6 +356,13 @@
 					53539B461BBBD0A200626562 = {
 						CreatedOnToolsVersion = 7.0.1;
 						TestTargetID = 53539B271BBBD0A100626562;
+					};
+					945751F61BEBC28800D9817A = {
+						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = ZK2MG3TWVQ;
+					};
+					945752021BEBC28800D9817A = {
+						CreatedOnToolsVersion = 7.1;
 					};
 				};
 			};
@@ -219,6 +382,8 @@
 				53539B271BBBD0A100626562 /* B1Summit2016 */,
 				53539B3B1BBBD0A200626562 /* B1Summit2016Tests */,
 				53539B461BBBD0A200626562 /* B1Summit2016UITests */,
+				945751F61BEBC28800D9817A /* B1Summit2016Watch */,
+				945752021BEBC28800D9817A /* B1Summit2016Watch Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -230,6 +395,8 @@
 			files = (
 				53539B361BBBD0A200626562 /* LaunchScreen.storyboard in Resources */,
 				53539B331BBBD0A200626562 /* Assets.xcassets in Resources */,
+				945752841BEBCB0600D9817A /* sap_business_one_app_58.jpg in Resources */,
+				94A1208A1BF249BD002911C6 /* B1Summit_2016_demo_app_dev-4.mobileprovision in Resources */,
 				53539B311BBBD0A200626562 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -238,6 +405,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94A1208B1BF249BD002911C6 /* B1Summit_2016_demo_app_dev-4.mobileprovision in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,6 +413,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94A1208C1BF249BD002911C6 /* B1Summit_2016_demo_app_dev-4.mobileprovision in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		945751F51BEBC28800D9817A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94A1208D1BF249BD002911C6 /* B1Summit_2016_demo_app_dev-4.mobileprovision in Resources */,
+				945751FD1BEBC28800D9817A /* Assets.xcassets in Resources */,
+				945751FB1BEBC28800D9817A /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		945752011BEBC28800D9817A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94A1208E1BF249BD002911C6 /* B1Summit_2016_demo_app_dev-4.mobileprovision in Resources */,
+				945752111BEBC28800D9817A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +464,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		945751FF1BEBC28800D9817A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9457520F1BEBC28800D9817A /* NotificationController.swift in Sources */,
+				9457520D1BEBC28800D9817A /* ExtensionDelegate.swift in Sources */,
+				9457520B1BEBC28800D9817A /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -288,6 +486,16 @@
 			isa = PBXTargetDependency;
 			target = 53539B271BBBD0A100626562 /* B1Summit2016 */;
 			targetProxy = 53539B481BBBD0A200626562 /* PBXContainerItemProxy */;
+		};
+		945752061BEBC28800D9817A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 945752021BEBC28800D9817A /* B1Summit2016Watch Extension */;
+			targetProxy = 945752051BEBC28800D9817A /* PBXContainerItemProxy */;
+		};
+		945752141BEBC28800D9817A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 945751F61BEBC28800D9817A /* B1Summit2016Watch */;
+			targetProxy = 945752131BEBC28800D9817A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -306,6 +514,14 @@
 				53539B351BBBD0A200626562 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		945751F91BEBC28800D9817A /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				945751FA1BEBC28800D9817A /* Base */,
+			);
+			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -398,10 +614,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = B1Summit2016/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = sap.B1Summit2016;
+				PRODUCT_BUNDLE_IDENTIFIER = sap.b1summmit.2016;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -409,10 +629,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = B1Summit2016/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = sap.B1Summit2016;
+				PRODUCT_BUNDLE_IDENTIFIER = sap.b1summmit.2016;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -464,6 +688,70 @@
 			};
 			name = Release;
 		};
+		945752161BEBC28800D9817A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				IBSC_MODULE = B1Summit2016Watch_Extension;
+				INFOPLIST_FILE = B1Summit2016Watch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = sap.b1summmit.2016.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		945752171BEBC28800D9817A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				IBSC_MODULE = B1Summit2016Watch_Extension;
+				INFOPLIST_FILE = B1Summit2016Watch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = sap.b1summmit.2016.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		945752181BEBC28800D9817A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "B1Summit2016Watch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = sap.b1summmit.2016.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		945752191BEBC28800D9817A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "B1Summit2016Watch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = sap.b1summmit.2016.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -483,6 +771,7 @@
 				53539B521BBBD0A200626562 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		53539B531BBBD0A200626562 /* Build configuration list for PBXNativeTarget "B1Summit2016Tests" */ = {
 			isa = XCConfigurationList;
@@ -491,6 +780,7 @@
 				53539B551BBBD0A200626562 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		53539B561BBBD0A200626562 /* Build configuration list for PBXNativeTarget "B1Summit2016UITests" */ = {
 			isa = XCConfigurationList;
@@ -499,6 +789,25 @@
 				53539B581BBBD0A200626562 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9457521A1BEBC28800D9817A /* Build configuration list for PBXNativeTarget "B1Summit2016Watch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				945752181BEBC28800D9817A /* Debug */,
+				945752191BEBC28800D9817A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9457521C1BEBC28800D9817A /* Build configuration list for PBXNativeTarget "B1Summit2016Watch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				945752161BEBC28800D9817A /* Debug */,
+				945752171BEBC28800D9817A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
