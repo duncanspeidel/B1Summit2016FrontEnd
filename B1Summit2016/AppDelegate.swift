@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  B1Summit2016
 //
-//  Created by Li, Yatsea on 9/30/15.
+//  Created by SAP on 9/30/15.
 //  Copyright © 2015 Li, Yatsea. All rights reserved.
 // Watch version
 
@@ -38,10 +38,60 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         MyDraft.deviceToken = deviceTokenString
         print( deviceTokenString )
+        //self.RegisterPhone()
+        
+        /*
+         * Tried to do the steps below in a separate function but couldn't find a way to extend class appDelegate, will revisit this in the future
+         * when I have more time
+        */
+        
+        //Register Phone with HANA
+        
+        
+        //https://54.191.40.200:4300/B1APN/B1APN.xsjs?token=4b3230c2c417611326d7f3211b5c415de76f810d44899983c05007ec93ee1bed
         
         
         
-    }
+        
+        
+        var B1APNXSJS = NSURL()
+        
+        //Switching to plain text to avoid issues with self signed certificate
+        MyDraft.deviceToken =  MyDraft.deviceToken.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        
+        B1APNXSJS = NSURL(string: "http://54.191.40.200:8000/B1APN/B1APN.xsjs?token=\(MyDraft.deviceToken)")!
+        
+        let xsjsRequest:NSMutableURLRequest = NSMutableURLRequest(URL:B1APNXSJS)
+        
+        
+        
+        
+        
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(xsjsRequest) {
+            
+            data, response, error in
+            
+            
+            
+            if error != nil {
+                
+                print("error=\(error)")
+                
+                return
+                
+            }       
+            
+            
+            
+            
+            
+            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            
+        }
+        
+        task.resume()
+        
+    }//didRegisterForRemoteNotifications
     
     func application( application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError ) {
         
@@ -113,8 +163,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }//End didReceiveRemoteNotification
     
+  //func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData )
+    //func application (application: UIApplication, RegiserPhone)
+    //class AppDelegate{
     
-    
-    
-}
+    func  RegiserPhone()
+    {
+        //https://54.191.40.200:4300/B1APN/B1APN.xsjs?token=4b3230c2c417611326d7f3211b5c415de76f810d44899983c05007ec93ee1bed
+        
+        
+        var B1APNXSJS = NSURL()
+        B1APNXSJS = NSURL(string: "https://54.191.40.200:4300/B1APN/B1APN.xsjs?token=\(MyDraft.deviceToken)")!
+        let xsjsRequest:NSMutableURLRequest = NSMutableURLRequest(URL:B1APNXSJS)
+        
+        
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(xsjsRequest) {
+            data, response, error in
+
+            if error != nil {
+            print("error=\(error)")
+            return
+            }       
+
+
+            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+        }
+        task.resume()
+
+
+
+
+
+    }//close RegisterPhone
+
+
+}//Close class
 

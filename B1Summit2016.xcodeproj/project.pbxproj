@@ -23,6 +23,13 @@
 		945752111BEBC28800D9817A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 945752101BEBC28800D9817A /* Assets.xcassets */; };
 		945752151BEBC28800D9817A /* B1Summit2016Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 945751F71BEBC28800D9817A /* B1Summit2016Watch.app */; };
 		945752841BEBCB0600D9817A /* sap_business_one_app_58.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 945752831BEBCB0600D9817A /* sap_business_one_app_58.jpg */; };
+		9467AEBE1C9C4A1B00BDD946 /* OrderApprovalPRD.CertificateSigningRequest.certSigningRequest in Resources */ = {isa = PBXBuildFile; fileRef = 9467AEBD1C9C4A1B00BDD946 /* OrderApprovalPRD.CertificateSigningRequest.certSigningRequest */; };
+		9467AEBF1C9C4A1B00BDD946 /* OrderApprovalPRD.CertificateSigningRequest.certSigningRequest in Resources */ = {isa = PBXBuildFile; fileRef = 9467AEBD1C9C4A1B00BDD946 /* OrderApprovalPRD.CertificateSigningRequest.certSigningRequest */; };
+		9467AEC11C9C61D900BDD946 /* sapb1summmit2016watchkitapp.mobileprovision in Resources */ = {isa = PBXBuildFile; fileRef = 9467AEC01C9C61D900BDD946 /* sapb1summmit2016watchkitapp.mobileprovision */; };
+		9467AEC21C9C61D900BDD946 /* sapb1summmit2016watchkitapp.mobileprovision in Resources */ = {isa = PBXBuildFile; fileRef = 9467AEC01C9C61D900BDD946 /* sapb1summmit2016watchkitapp.mobileprovision */; };
+		9467AEC31C9C61D900BDD946 /* sapb1summmit2016watchkitapp.mobileprovision in Resources */ = {isa = PBXBuildFile; fileRef = 9467AEC01C9C61D900BDD946 /* sapb1summmit2016watchkitapp.mobileprovision */; };
+		9467AEC41C9C61D900BDD946 /* sapb1summmit2016watchkitapp.mobileprovision in Resources */ = {isa = PBXBuildFile; fileRef = 9467AEC01C9C61D900BDD946 /* sapb1summmit2016watchkitapp.mobileprovision */; };
+		9467AEC51C9C61D900BDD946 /* sapb1summmit2016watchkitapp.mobileprovision in Resources */ = {isa = PBXBuildFile; fileRef = 9467AEC01C9C61D900BDD946 /* sapb1summmit2016watchkitapp.mobileprovision */; };
 		94A1208A1BF249BD002911C6 /* B1Summit_2016_demo_app_dev-4.mobileprovision in Resources */ = {isa = PBXBuildFile; fileRef = 94A120891BF249BD002911C6 /* B1Summit_2016_demo_app_dev-4.mobileprovision */; };
 		94A1208B1BF249BD002911C6 /* B1Summit_2016_demo_app_dev-4.mobileprovision in Resources */ = {isa = PBXBuildFile; fileRef = 94A120891BF249BD002911C6 /* B1Summit_2016_demo_app_dev-4.mobileprovision */; };
 		94A1208C1BF249BD002911C6 /* B1Summit_2016_demo_app_dev-4.mobileprovision in Resources */ = {isa = PBXBuildFile; fileRef = 94A120891BF249BD002911C6 /* B1Summit_2016_demo_app_dev-4.mobileprovision */; };
@@ -112,6 +119,8 @@
 		945752101BEBC28800D9817A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		945752121BEBC28800D9817A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		945752831BEBCB0600D9817A /* sap_business_one_app_58.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = sap_business_one_app_58.jpg; path = "../../../../Watch tests/LearningWatch/B1Summit2016_watch_Version/sap_business_one_app_58.jpg"; sourceTree = "<group>"; };
+		9467AEBD1C9C4A1B00BDD946 /* OrderApprovalPRD.CertificateSigningRequest.certSigningRequest */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OrderApprovalPRD.CertificateSigningRequest.certSigningRequest; sourceTree = "<group>"; };
+		9467AEC01C9C61D900BDD946 /* sapb1summmit2016watchkitapp.mobileprovision */ = {isa = PBXFileReference; lastKnownFileType = file; path = sapb1summmit2016watchkitapp.mobileprovision; sourceTree = "<group>"; };
 		94A120891BF249BD002911C6 /* B1Summit_2016_demo_app_dev-4.mobileprovision */ = {isa = PBXFileReference; lastKnownFileType = file; name = "B1Summit_2016_demo_app_dev-4.mobileprovision"; path = "../../../../Downloads/B1Summit_2016_demo_app_dev-4.mobileprovision"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -156,6 +165,8 @@
 				945751F81BEBC28800D9817A /* B1Summit2016Watch */,
 				945752071BEBC28800D9817A /* B1Summit2016Watch Extension */,
 				53539B291BBBD0A200626562 /* Products */,
+				9467AEBD1C9C4A1B00BDD946 /* OrderApprovalPRD.CertificateSigningRequest.certSigningRequest */,
+				9467AEC01C9C61D900BDD946 /* sapb1summmit2016watchkitapp.mobileprovision */,
 				94A120891BF249BD002911C6 /* B1Summit_2016_demo_app_dev-4.mobileprovision */,
 			);
 			sourceTree = "<group>";
@@ -363,6 +374,7 @@
 					};
 					945752021BEBC28800D9817A = {
 						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = ZK2MG3TWVQ;
 					};
 				};
 			};
@@ -394,8 +406,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				53539B361BBBD0A200626562 /* LaunchScreen.storyboard in Resources */,
+				9467AEC11C9C61D900BDD946 /* sapb1summmit2016watchkitapp.mobileprovision in Resources */,
 				53539B331BBBD0A200626562 /* Assets.xcassets in Resources */,
 				945752841BEBCB0600D9817A /* sap_business_one_app_58.jpg in Resources */,
+				9467AEBE1C9C4A1B00BDD946 /* OrderApprovalPRD.CertificateSigningRequest.certSigningRequest in Resources */,
 				94A1208A1BF249BD002911C6 /* B1Summit_2016_demo_app_dev-4.mobileprovision in Resources */,
 				53539B311BBBD0A200626562 /* Main.storyboard in Resources */,
 			);
@@ -405,6 +419,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9467AEC21C9C61D900BDD946 /* sapb1summmit2016watchkitapp.mobileprovision in Resources */,
 				94A1208B1BF249BD002911C6 /* B1Summit_2016_demo_app_dev-4.mobileprovision in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -413,6 +428,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9467AEC31C9C61D900BDD946 /* sapb1summmit2016watchkitapp.mobileprovision in Resources */,
 				94A1208C1BF249BD002911C6 /* B1Summit_2016_demo_app_dev-4.mobileprovision in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -421,7 +437,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9467AEC41C9C61D900BDD946 /* sapb1summmit2016watchkitapp.mobileprovision in Resources */,
 				94A1208D1BF249BD002911C6 /* B1Summit_2016_demo_app_dev-4.mobileprovision in Resources */,
+				9467AEBF1C9C4A1B00BDD946 /* OrderApprovalPRD.CertificateSigningRequest.certSigningRequest in Resources */,
 				945751FD1BEBC28800D9817A /* Assets.xcassets in Resources */,
 				945751FB1BEBC28800D9817A /* Interface.storyboard in Resources */,
 			);
@@ -433,6 +451,7 @@
 			files = (
 				94A1208E1BF249BD002911C6 /* B1Summit_2016_demo_app_dev-4.mobileprovision in Resources */,
 				945752111BEBC28800D9817A /* Assets.xcassets in Resources */,
+				9467AEC51C9C61D900BDD946 /* sapb1summmit2016watchkitapp.mobileprovision in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -604,6 +623,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -727,6 +747,7 @@
 		945752181BEBC28800D9817A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "B1Summit2016Watch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = sap.b1summmit.2016.watchkitapp.watchkitextension;
@@ -741,6 +762,7 @@
 		945752191BEBC28800D9817A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "B1Summit2016Watch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = sap.b1summmit.2016.watchkitapp.watchkitextension;

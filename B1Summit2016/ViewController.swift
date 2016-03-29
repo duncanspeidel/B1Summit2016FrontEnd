@@ -31,6 +31,13 @@ struct MyDraft {
     
 }
 
+struct phoneDetails {
+    
+    //static var draft = NSString()
+    static var deviceToken = String()
+    
+}
+
 
 
 
@@ -62,9 +69,11 @@ class ViewController: UIViewController, WCSessionDelegate {
         */
 
         
+        
+        
         var SLurl = NSURL(string: "http://54.191.40.200:50001/b1s/v1/Login")
         
-        var request:NSMutableURLRequest = NSMutableURLRequest(URL:SLurl!)
+        let request:NSMutableURLRequest = NSMutableURLRequest(URL:SLurl!)
         
         request.HTTPMethod = "POST"
         
@@ -129,7 +138,9 @@ class ViewController: UIViewController, WCSessionDelegate {
                 
                 self.DeviceTokenText.text = MyDraft.deviceToken.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
                 self.DeviceTokenText.text = self.DeviceTokenText.text
-                self.DeviceTokenText.hidden = false
+                //self.DeviceTokenText.hidden = false
+                self.RegisterPhone()
+             
                 
                 
                 let requestObj = NSURLRequest(URL: SLurl!)
@@ -711,11 +722,8 @@ class ViewController: UIViewController, WCSessionDelegate {
         
         
         CardName = CardName.stringByReplacingOccurrencesOfString("\"", withString: "")
-        
         CardNameLabel.text = CardName.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-        
         CardNameLabel.text = CardNameLabel.text?.stringByReplacingOccurrencesOfString("CardName", withString: "Customer")
-        
         CardName = CardName.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
         
         
@@ -845,6 +853,68 @@ class ViewController: UIViewController, WCSessionDelegate {
         
     }//close func
     
+    func RegisterPhone ()
+    {
+        
+        /*  Code also in AppDelegaete part of func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData )
+        * Testing shows the code isn't called post watch extenstion addition
+        * Not clear on details will investigate later
+        */
+        
+        
+        //https://54.191.40.200:4300/B1APN/B1APN.xsjs?token=4b3230c2c417611326d7f3211b5c415de76f810d44899983c05007ec93ee1bed
+        
+        
+        
+        
+        
+        var B1APNXSJS = NSURL()
+        //self.DeviceTokenText.hidden = false
+        
+        //Switching to plain text to avoid issues with self signed certificate
+        //B1APNXSJS = NSURL(string: "http://54.191.40.200:80000/B1APN/B1APN.xsjs?token=\(phoneDetails.deviceToken)")!
+        B1APNXSJS = NSURL(string: "http://54.191.40.200:8000/B1APN/B1APN.xsjs?token=\(MyDraft.deviceToken)")!
+        let xsjsRequest:NSMutableURLRequest = NSMutableURLRequest(URL:B1APNXSJS)
+        var response = NSString()
+        
+        
+        
+        
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(xsjsRequest) {
+            
+            data, response, error in
+            
+            
+            
+            if error != nil {
+                
+                print("error=\(error)")
+                
+                return
+                
+            }
+            
+            
+            
+            
+ //           self.DeviceTokenText.hidden = false
+
+//            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+//            self.DeviceTokenText.text = responseString as! String
+            
+            
+        }
+        
+        task.resume()
+        
+        
+ //       self.DeviceTokenText.hidden = false
+ //       let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+ //       self.DeviceTokenText.text = responseString as! String
+
+        
+    }//RegisterPhone
+    
     
 
     
@@ -866,6 +936,83 @@ class ViewController: UIViewController, WCSessionDelegate {
     
     
     @IBOutlet weak var DeviceTokenText: UITextField!
+    
+    @IBAction func PresdReject(sender: AnyObject) {
+        /*
+        
+        * Would like to use existing connection but no way to know time between when user connected and when user approves the order'
+        
+        * Will establish a connection then approve the order
+        
+
+        */
+        
+        
+        /*
+        
+        * No way to know elapsed time between when app start and approve button pushed, so a new connection is created to ensure Draft can be processed
+        
+        *TODO: Add a check for a live connection and use that if it exists
+        
+        */
+        
+        var SLurl = NSURL(string: "http://54.191.40.200:50001/b1s/v1/Login")
+        
+        var request:NSMutableURLRequest = NSMutableURLRequest(URL:SLurl!)
+        
+        request.HTTPMethod = "POST"
+        
+        request.HTTPShouldHandleCookies=true //capture session ID
+        
+        var bodyData = "{\"UserName\":\"manager\", \"Password\":\"1234\", \"CompanyDB\":\"SBODEMOUS\"}"
+        
+        
+        
+        
+        
+        request.HTTPBody = bodyData.dataUsingEncoding(NSUTF8StringEncoding);
+        
+        var approvalLogon = NSString()
+        
+        var responseSLlogon = NSData()
+        
+        /*
+        
+        * After logging on need to build payload body to approve the draft
+        
+        * Approval will be done in separate function
+        
+        */
+        
+        
+        
+        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue())
+            
+            {
+                
+                (response, data, error) in
+                
+                approvalLogon  = NSString(data: responseSLlogon, encoding: NSUTF8StringEncoding)!
+                
+                
+                
+                let requestObj = NSURLRequest(URL: SLurl!)
+                
+                self.ExecuteReject(request)
+                
+                
+                
+                
+                
+        }
+        
+        
+        
+    
+    
+    
+    }//Reject Func
+    
     
     @IBAction func messageChanged(sender: AnyObject) {
         if let message : String = CardNameLabel.text {
@@ -1077,9 +1224,120 @@ class ViewController: UIViewController, WCSessionDelegate {
                 
         }
         
+            
+        
+    }//Approval
+    
+    func ExecuteReject(request:NSMutableURLRequest)
+        
+    {
         
         
-    }
+        
+        
+        //Same as body for Approval except differen status
+        var bodyData = "{\n\"ApprovalRequest\": { \n\"Code\":15,\n\"ObjectType\":\"112\",\n\"IsDraft\":\"Y\",\n\"ObjectEntry\": 16,\n\"Status\": \"arsNotApproved\",\n\"Remarks\": \"ppp\",\n\"CurrentStage\": 7,\n\"OriginatorID\": 19,\n\"ApprovalRequestLines\": [\n{\n\"StageCode\": 7,\n\"UserID\": 1,\n\"Status\": \"arsNotApproved\",\n\"Remarks\": \"null\"\n}\n],\n\"ApprovalRequestDecisions\": [\n{\n\"ApproverUserName\": \"manager\",\n\"ApproverPassword\": \"1234\",\n\"Status\": \"ardApproved\",\n\"Remarks\": \"Approved and go ahead!\"\n}\n]\n}\n}"
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        var SLurl = NSURL(string: "http://54.191.40.200:50001/b1s/v1/ApprovalRequestsService_UpdateRequest")
+        
+        
+        
+        
+        
+        //var bodyData2 = "{\n\t\"ApprovalRequest\": { \n\t\"Code\":15,\n\t\"ObjectType\":\"112\",\n\t\"IsDraft\":\"Y\",\n\t\"ObjectEntry\": 16,\n\t\"Status\": \"arsApproved\",\n\t\"Remarks\": \"ppp\",\n\t\"CurrentStage\": 7,\n\t\"OriginatorID\": 19,\n\t\"ApprovalRequestLines\": [\n\t{\n\t\"StageCode\": 7,\n\t\"UserID\": 1,\n\t\"Status\": \"arsApproved\",\n\t\"Remarks\": \"ppp\"\n}\n],\n\"ApprovalRequestDecisions\": [\n{\n\"ApproverUserName\": \"manager\",\n\"ApproverPassword\": \"1234\",\n\"Status\": \"ardApproved\",\n\"Remarks\": \"Approved and go ahead!\"\n}\n]\n}\n}"
+        
+        
+        
+        
+        
+        
+        
+        var approvalStatus = NSData()
+        
+        var serviceLayerResult = NSString()
+        
+        let request:NSMutableURLRequest = NSMutableURLRequest(URL:SLurl!)
+        
+        request.HTTPMethod="POST"
+        
+        request.HTTPBody = bodyData.dataUsingEncoding(NSUTF8StringEncoding);
+        
+        
+        
+        
+        
+        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue())
+            
+            {
+                
+                (response, data, error) in
+                
+                
+                
+                approvalStatus = data!
+                
+                serviceLayerResult = NSString(data: approvalStatus, encoding: NSUTF8StringEncoding)!
+                
+                /*
+                
+                * Service Layer call to approve the order has a return code of 204 when successful
+                
+                * This HTTP access API call does not grab 204 messages so we check if the string containing the result has a size of 0
+                
+                * if the size is 0 we had success and can gracefully exit
+                
+                */
+                
+                if serviceLayerResult.length == 0
+                    
+                {
+                    
+                    
+                    
+                    let alertController = UIAlertController(title: "Order Approval App", message:
+                        
+                        "Order Successful Rejected", preferredStyle: UIAlertControllerStyle.Alert)
+                    
+                    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                    
+                    self.presentViewController(alertController, animated: true, completion: nil)
+                    
+                    
+                    
+                    
+                    
+                }
+                    
+                else
+                    
+                {
+                    
+                    let alertController = UIAlertController(title: "Order Approval App", message:
+                        
+                        "Order rejection Failed", preferredStyle: UIAlertControllerStyle.Alert)
+                    
+                    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                    
+                    self.presentViewController(alertController, animated: true, completion: nil)
+                    
+                    
+                    
+                }
+                
+        }
+        
+        
+        
+    }//OrderRejection
+
     
     
     

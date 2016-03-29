@@ -44,12 +44,12 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
 
 
     
-    override func handleActionWithIdentifier(identifier: String?, forRemoteNotification remoteNotification: [NSObject : AnyObject])
+/*Function used for an active app    override func handleActionWithIdentifier(identifier: String?, forRemoteNotification remoteNotification: [NSObject : AnyObject])
     {
         //let action = identifier
 
         
-        
+     
         
         var draftNum = String()
         NSUserDefaults.standardUserDefaults().registerDefaults(remoteNotification as! [String: AnyObject])
@@ -64,6 +64,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         draftNum = draftNum.stringByReplacingOccurrencesOfString(";", withString:"")
         draftNum = draftNum.stringByReplacingOccurrencesOfString("alert", withString:"")
         draftNum = draftNum.stringByReplacingOccurrencesOfString("category", withString:"")
+        //draftNum = draftNum.stringByReplacingOccurrencesOfString("WatchAPN", withString:"")
         draftNum = draftNum.stringByReplacingOccurrencesOfString("myCategory", withString:"")
         draftNum = draftNum.stringByReplacingOccurrencesOfString("\"", withString:"")
         draftNum = draftNum.stringByReplacingOccurrencesOfString("body", withString:"")
@@ -72,14 +73,13 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         draftNum = draftNum.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
         MyDraft.draft = draftNum
         //print("In handleActionWithIdentifier MyDrdt.draft =", MyDraft.draft)
-
         
         
         
         
     }//handleActionWithIdentifier for no action
     
-
+*/
     
     
     
@@ -99,15 +99,15 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         
         
         
-        var SLurl = NSURL(string: "http://54.191.40.200:50001/b1s/v1/Login")
+        let SLurl = NSURL(string: "http://54.191.40.200:50001/b1s/v1/Login")
         
-        var request:NSMutableURLRequest = NSMutableURLRequest(URL:SLurl!)
+        let request:NSMutableURLRequest = NSMutableURLRequest(URL:SLurl!)
         
         request.HTTPMethod = "POST"
         
         request.HTTPShouldHandleCookies=true //capture session ID
         
-        var bodyData = "{\"UserName\":\"manager\", \"Password\":\"1234\", \"CompanyDB\":\"SBODEMOUS\"}"
+        let bodyData = "{\"UserName\":\"manager\", \"Password\":\"1234\", \"CompanyDB\":\"SBODEMOUS\"}"
         
         var stringForHandleAction = String()
         //handleActionWithIdentifier(stringForHandleAction, forRemoteNotification: <#T##[NSObject : AnyObject]#>)
@@ -372,7 +372,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         DocTotal = DocTotal.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
         
         
-        DocTotal = DocTotal.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        //DocTotal = DocTotal.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
         
         DocTotal = DocTotal.stringByReplacingOccurrencesOfString("DocTotal", withString: "Amount")
         
