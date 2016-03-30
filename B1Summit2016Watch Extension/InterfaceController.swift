@@ -29,10 +29,9 @@ var watchSession : WCSession?
 
 
 class InterfaceController: WKInterfaceController, WCSessionDelegate {
-//class InterfaceController: WKInterfaceController {
-   
+
     @IBOutlet var CardNameLabel: WKInterfaceLabel!
-    
+
     @IBOutlet weak var DocTotalLabel:WKInterfaceLabel!
     
     @IBOutlet weak var DiscountPerentageLabel: WKInterfaceLabel!
@@ -43,66 +42,9 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     
     @IBOutlet weak var SalesPersonLabel: WKInterfaceLabel!
     
-
-
-    
-/*Function used for an active app
- */
- override func handleActionWithIdentifier(identifier: String?, forRemoteNotification remoteNotification: [NSObject : AnyObject])
-    {
-        //let action = identifier
-
-        
-     
-        
-        var draftNum = String()
-        NSUserDefaults.standardUserDefaults().registerDefaults(remoteNotification as! [String: AnyObject])
-        draftNum = remoteNotification.description
-        draftNum = draftNum.stringByReplacingOccurrencesOfString("New approval request for sales order draft", withString: "")
-        draftNum = draftNum.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-        draftNum = draftNum.stringByReplacingOccurrencesOfString("[", withString:"")
-        draftNum = draftNum.stringByReplacingOccurrencesOfString("aps:", withString:"")
-        draftNum = draftNum.stringByReplacingOccurrencesOfString("{", withString:"")
-        draftNum = draftNum.stringByReplacingOccurrencesOfString("}", withString:"")
-        draftNum = draftNum.stringByReplacingOccurrencesOfString("=", withString:"")
-        draftNum = draftNum.stringByReplacingOccurrencesOfString(";", withString:"")
-        draftNum = draftNum.stringByReplacingOccurrencesOfString("alert", withString:"")
-        draftNum = draftNum.stringByReplacingOccurrencesOfString("category", withString:"")
-        //draftNum = draftNum.stringByReplacingOccurrencesOfString("WatchAPN", withString:"")
-        draftNum = draftNum.stringByReplacingOccurrencesOfString("myCategory", withString:"")
-        draftNum = draftNum.stringByReplacingOccurrencesOfString("\"", withString:"")
-        draftNum = draftNum.stringByReplacingOccurrencesOfString("body", withString:"")
-        draftNum = draftNum.stringByReplacingOccurrencesOfString(" ", withString:"")
-        draftNum = draftNum.stringByReplacingOccurrencesOfString("]", withString:"")
-        draftNum = draftNum.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-        MyDraft.draft = draftNum
-        //print("In handleActionWithIdentifier MyDrdt.draft =", MyDraft.draft)
-        
-        
-        
-        
-    }//handleActionWithIdentifier for no action
-    
-
-    
-    
-    
-    
     @IBAction func PressApprove(sender: AnyObject) {
  
-
-        
-        
-        /*
-        
-        * No way to know elapsed time between when app start and approve button pushed, so a new connection is created to ensure Draft can be processed
-        
-        *TODO: Add a check for a live connection and use that if it exists
-        
-        */
-        
-        
-        
+ 
         let SLurl = NSURL(string: "http://54.191.40.200:50001/b1s/v1/Login")
         
         let request:NSMutableURLRequest = NSMutableURLRequest(URL:SLurl!)
@@ -154,24 +96,12 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         
         
     }//func PressApprove(sender: AnyObject)
-    
+
     
     @IBAction func PressReject() {
         
-        
-        
-        
-        /*
-         
-         * No way to know elapsed time between when app start and approve button pushed, so a new connection is created to ensure Draft can be processed
-         
-         *TODO: Add a check for a live connection and use that if it exists
-         
-         */
-        
-        
-        
-        let SLurl = NSURL(string: "http://54.191.40.200:50001/b1s/v1/Login")
+
+        let SLurl = NSURL(string: "\(SL)Login")
         
         let request:NSMutableURLRequest = NSMutableURLRequest(URL:SLurl!)
         
@@ -224,11 +154,16 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         
-        // Configure interface objects here.
+        if let vcID = self.valueForKey("_viewControllerID") as? NSString {
+            
+            print("Page One:", vcID)
+            
+        }
+        self.LogonServiceLayer()
         
-    }
-
-    
+        
+    }//awakeWithContext
+   
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
@@ -238,18 +173,11 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             watchSession!.delegate = self
             watchSession!.activateSession()
         }
-
-        
-        func awakeWithContext(context: AnyObject?) {
-            super.awakeWithContext(context)
-            if let vcID = self.valueForKey("_viewControllerID") as? NSString {
-                print("Page One:", vcID)
-            }
-        }
-        
-        
-        
+       
+    self.LogonServiceLayer()
+   
     }//willActivate
+    
     func GetDraftDetails(request:NSMutableURLRequest) {
         
         /*
@@ -263,18 +191,18 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         */
         
         var SLurl = NSURL()
-        
+        print ("Interface Controller MyDraft.draft=",MyDraft.draft)
         if MyDraft.draft.length == 0
             
         {
             
-            SLurl = NSURL(string: "http://54.191.40.200:50001/b1s/v1/Drafts(235)?$select=CardName,DocTotal,DiscountPercent")!
+            SLurl = NSURL(string: "\(SL)Drafts(235)?$select=CardName,DocTotal,DiscountPercent")!
             //CardNameLabel.setText(MyDraft.draft as String)
         }else
             
         {
             
-            SLurl = NSURL(string: "http://54.191.40.200:50001/b1s/v1/Drafts(\(MyDraft.draft))?$select=CardName,DocTotal,DiscountPercent")!
+            SLurl = NSURL(string: "\(SL)Drafts(\(MyDraft.draft))?$select=CardName,DocTotal,DiscountPercent")!
             
             
             
@@ -313,25 +241,12 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             
             let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
             
-            
-
-
-            
-            
             orderDetails = responseString!
             var CardName = self.GetOrderDetails(orderDetails)
             self.GetBPDetails(request, CardName: CardName)
         }
         task.resume()
-
-        
-        
-        ///end addition
-        
-       
-        
-        
-        
+      
     }//Close GetDraftDetails
 
     func GetOrderDetails(orderDetails: NSString) -> String{
@@ -350,12 +265,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         
         var DiscountPercentage = String()
         
-        
-        
-        
-        
-        
-        
+     
         for item in localString.characters
             
         {
@@ -375,28 +285,13 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
                 fieldCount++
                 
                 
-                
-                
-                
-                
-                
             }//item = comma if
-            
-            
-            
-            
-            
+           
             if writeOut && !isComma && fieldCount==1
                 
             {
                 
-                
-                
-                CardName = CardName + String (item)
-                
-                
-                
-                
+               CardName = CardName + String (item)
                 
             }else if !isComma && fieldCount==2 {
                 
@@ -410,17 +305,11 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
                 
             }
             
-            
-            
             isComma=false
             
             
             
         }//for
-        
-        
-        
-        
         
         //CardNameLabel.text = String()
         
@@ -462,7 +351,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         
         
     }//GetOrderDetails
-    
+
     func GetBPDetails(request:NSMutableURLRequest, CardName:String)
         
     {
@@ -837,6 +726,31 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         
     }//OrderRejection
 
+    func LogonServiceLayer(){
+    //Create method to connect to SL
+        
+        
+        
+        //--Round two ****
+        let request = NSMutableURLRequest(URL: NSURL(string: "http://54.191.40.200:50001/b1s/v1/Login")!)
+        request.HTTPMethod = "POST"
+        let postString = "{\"UserName\":\"manager\", \"Password\":\"1234\", \"CompanyDB\":\"SBODEMOUS\"}"
+        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
+            data, response, error in
+            
+            if error != nil {
+                print("error=\(error)")
+                return
+            }
+            
+            
+            
+            //let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            self.GetDraftDetails(request)
+        }
+        task.resume()
+    }
     
 
 /*
@@ -875,28 +789,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     {
         super.init()
         //var SLurl = NSURL(string: "http://54.191.40.200:50001/b1s/v1/Login")
-        
-        
-        
-        //--Round two ****
-        let request = NSMutableURLRequest(URL: NSURL(string: "http://54.191.40.200:50001/b1s/v1/Login")!)
-        request.HTTPMethod = "POST"
-        let postString = "{\"UserName\":\"manager\", \"Password\":\"1234\", \"CompanyDB\":\"SBODEMOUS\"}"
-        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
-        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
-            data, response, error in
-            
-            if error != nil {
-                print("error=\(error)")
-                return
-            }
-            
-            
-            
-            //let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-            self.GetDraftDetails(request)
-        }
-        task.resume()
+
         
 
     }//init

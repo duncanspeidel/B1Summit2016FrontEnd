@@ -50,15 +50,15 @@ class NotificationController: WKUserNotificationInterfaceController {
         //
         // After populating your dynamic notification interface call the completion block.
  
-/*commenting out to test if code not required switching to function in Interface Controller
+
         if let remoteaps:NSDictionary = remoteNotification["aps"] as? NSDictionary{
             if let remoteAlert:NSDictionary = remoteaps["alert"] as? NSDictionary{
-                handleNotification( remoteAlert );
+                handleNotification(remoteAlert );
             }
         }
         
         
-End InterfaceController code comment */
+
         
         let interface = WKUserNotificationInterfaceType.Default
         
@@ -68,15 +68,39 @@ End InterfaceController code comment */
     }//Close
  
     func handleNotification( alert : AnyObject? ){
-            //self.alertLabel!.setText(remotetitle);
-            //self.
+/*
+ if let aps = _userInfo["aps"] as? NSDictionary {
+ if let alert = aps["alert"] as? NSDictionary {
+ if let message = alert["message"] as? NSString {
+ //Do stuff
+ print ("In do stuff area", message)
+ //let draftNum = alert.stringByReplacingOccurrencesOfString("New approval request for sales order draft", withString: "")
+ var draftNum = alert.description
+ draftNum = draftNum.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+ draftNum = draftNum.stringByReplacingOccurrencesOfString("New approval request for sales order draft", withString: "")
+ MyDraft.draft=draftNum.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+ 
+ }
+*/
         
+            if let message = alert!["message"] as? NSString {
+                //Do stuff
+                print ("In do stuff area", message)
+                //let draftNum = alert.stringByReplacingOccurrencesOfString("New approval request for sales order draft", withString: "")
+                var draftNum = alert!.description
+                draftNum = draftNum.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+                draftNum = draftNum.stringByReplacingOccurrencesOfString("New approval request for sales order draft", withString: "")
+                MyDraft.draft=draftNum.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+                
+            }
+
+ 
         //if let alert: AnyObject = alert, let remotebody = alert["body"] as? String{
             let remotebody = alert!["body"] as? String
             let draftNum = remotebody!.stringByReplacingOccurrencesOfString("New approval request for sales order draft", withString: "")
 
             MyDraft.draft = draftNum.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-            //print ("In handleNotification MyDraft.dradt = ",MyDraft.draft)
+            print ("In handleNotification MyDraft.dradt = ",MyDraft.draft)
             
         
         
