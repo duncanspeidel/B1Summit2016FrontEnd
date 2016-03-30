@@ -2,10 +2,6 @@
 
 //  ViewController.swift
 
-//  ServiceLayer
-
-//
-
 //  Created by Speidel, Duncan on 10/6/15.
 
 //  Copyright © 2015 Speidel, Duncan. All rights reserved.
@@ -39,7 +35,7 @@ struct phoneDetails {
 }
 
 
-
+var SL =  "http://54.191.40.200:50001/b1s/v1/" as String
 
 
 
@@ -50,7 +46,7 @@ class ViewController: UIViewController, WCSessionDelegate {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
+        self.RegisterPhone()
         /* 
          * Setup wath communication channels
         */
@@ -71,7 +67,7 @@ class ViewController: UIViewController, WCSessionDelegate {
         
         
         
-        var SLurl = NSURL(string: "http://54.191.40.200:50001/b1s/v1/Login")
+        var SLurl = NSURL(string: "\(SL)Login")
         
         let request:NSMutableURLRequest = NSMutableURLRequest(URL:SLurl!)
         
@@ -122,13 +118,13 @@ class ViewController: UIViewController, WCSessionDelegate {
                     
                 {
                     
-                    SLurl = NSURL(string: "http://54.191.40.200:50001/b1s/v1/Drafts(112)?$select=CardName,DocTotal,DiscountPercent")
+                    SLurl = NSURL(string: "\(SL)Drafts(112)?$select=CardName,DocTotal,DiscountPercent")
                     
                     //print ("Using draft = 13")
                     
                 }else{
                     
-                    SLurl = NSURL(string: "http://54.191.40.200:50001/b1s/v1/Drafts(\(MyDraft.draft))?$select=CardName,DocTotal,DiscountPercent")
+                    SLurl = NSURL(string: "\(SL)Drafts(\(MyDraft.draft))?$select=CardName,DocTotal,DiscountPercent")
                     
                     //print("Using value of myDrafts.draft", MyDraft.draft)
                     
@@ -139,7 +135,7 @@ class ViewController: UIViewController, WCSessionDelegate {
                 self.DeviceTokenText.text = MyDraft.deviceToken.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
                 self.DeviceTokenText.text = self.DeviceTokenText.text
                 //self.DeviceTokenText.hidden = false
-                self.RegisterPhone()
+                
              
                 
                 
@@ -185,7 +181,7 @@ class ViewController: UIViewController, WCSessionDelegate {
         
         */
         
-        var SLurl = NSURL(string: "http://54.191.40.200:50001/b1s/v1/Login")
+        var SLurl = NSURL(string: "h\(SL)Login")
         
         var request:NSMutableURLRequest = NSMutableURLRequest(URL:SLurl!)
         
@@ -241,7 +237,7 @@ class ViewController: UIViewController, WCSessionDelegate {
                 
                 
                 
-                SLurl = NSURL(string: "http://54.191.40.200:50001/b1s/v1/Drafts(\(MyDraft.draft))?$select=CardName,DocTotal,DiscountPercent")
+                SLurl = NSURL(string: "\(SL)Drafts(\(MyDraft.draft))?$select=CardName,DocTotal,DiscountPercent")
                
                 let requestObj = NSURLRequest(URL: SLurl!)
                 
@@ -295,13 +291,13 @@ class ViewController: UIViewController, WCSessionDelegate {
             
         {
             
-            SLurl = NSURL(string: "http://54.191.40.200:50001/b1s/v1/Drafts(112)?$select=CardName,DocTotal,DiscountPercent")!
+            SLurl = NSURL(string: "\(SL)Drafts(112)?$select=CardName,DocTotal,DiscountPercent")!
             
         }else
             
         {
             
-            SLurl = NSURL(string: "http://54.191.40.200:50001/b1s/v1/Drafts(\(MyDraft.draft))?$select=CardName,DocTotal,DiscountPercent")!
+            SLurl = NSURL(string: "\(SL)Drafts(\(MyDraft.draft))?$select=CardName,DocTotal,DiscountPercent")!
             
             
             
@@ -405,7 +401,7 @@ class ViewController: UIViewController, WCSessionDelegate {
         
         print("fixedCardName=", fixedCardName)
         
-        var SLurl = NSURL(string: "http://54.191.40.200:50001/b1s/v1/BusinessPartners?$filter=CardName%20eq%20'\(fixedCardName)'&$select=CurrentAccountBalance,CreditLimit,SalesPerson/SalesEmployeeName&$expand=SalesPerson")
+        var SLurl = NSURL(string: "\(SL)BusinessPartners?$filter=CardName%20eq%20'\(fixedCardName)'&$select=CurrentAccountBalance,CreditLimit,SalesPerson/SalesEmployeeName&$expand=SalesPerson")
         
         
         
@@ -873,6 +869,7 @@ class ViewController: UIViewController, WCSessionDelegate {
         
         //Switching to plain text to avoid issues with self signed certificate
         //B1APNXSJS = NSURL(string: "http://54.191.40.200:80000/B1APN/B1APN.xsjs?token=\(phoneDetails.deviceToken)")!
+        
         B1APNXSJS = NSURL(string: "http://54.191.40.200:8000/B1APN/B1APN.xsjs?token=\(MyDraft.deviceToken)")!
         let xsjsRequest:NSMutableURLRequest = NSMutableURLRequest(URL:B1APNXSJS)
         var response = NSString()
@@ -938,15 +935,7 @@ class ViewController: UIViewController, WCSessionDelegate {
     @IBOutlet weak var DeviceTokenText: UITextField!
     
     @IBAction func PresdReject(sender: AnyObject) {
-        /*
-        
-        * Would like to use existing connection but no way to know time between when user connected and when user approves the order'
-        
-        * Will establish a connection then approve the order
-        
 
-        */
-        
         
         /*
         
@@ -956,7 +945,7 @@ class ViewController: UIViewController, WCSessionDelegate {
         
         */
         
-        var SLurl = NSURL(string: "http://54.191.40.200:50001/b1s/v1/Login")
+        var SLurl = NSURL(string: "\(SL)Login")
         
         var request:NSMutableURLRequest = NSMutableURLRequest(URL:SLurl!)
         
@@ -1060,7 +1049,7 @@ class ViewController: UIViewController, WCSessionDelegate {
         
         
         
-        var SLurl = NSURL(string: "http://54.191.40.200:50001/b1s/v1/Login")
+        var SLurl = NSURL(string: "\(SL)Login")
         
         var request:NSMutableURLRequest = NSMutableURLRequest(URL:SLurl!)
         

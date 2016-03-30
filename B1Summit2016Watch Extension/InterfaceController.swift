@@ -3,7 +3,7 @@
 //  B1Summit2016Watch Extension
 //
 //  Created by Speidel, Duncan on 11/5/15.
-//  Copyright © 2015 Li, Yatsea. All rights reserved.
+//  Copyright © 2016 Speidel, Duncan. All rights reserved.
 //
 
 import WatchKit
@@ -22,6 +22,8 @@ struct MyDraft {
     
     
 }
+
+var SL =  "http://54.191.40.200:50001/b1s/v1/" as String
 
 var watchSession : WCSession?
 
@@ -44,7 +46,9 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
 
 
     
-/*Function used for an active app    override func handleActionWithIdentifier(identifier: String?, forRemoteNotification remoteNotification: [NSObject : AnyObject])
+/*Function used for an active app
+ */
+ override func handleActionWithIdentifier(identifier: String?, forRemoteNotification remoteNotification: [NSObject : AnyObject])
     {
         //let action = identifier
 
@@ -79,7 +83,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         
     }//handleActionWithIdentifier for no action
     
-*/
+
     
     
     
@@ -151,6 +155,72 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         
     }//func PressApprove(sender: AnyObject)
     
+    
+    @IBAction func PressReject() {
+        
+        
+        
+        
+        /*
+         
+         * No way to know elapsed time between when app start and approve button pushed, so a new connection is created to ensure Draft can be processed
+         
+         *TODO: Add a check for a live connection and use that if it exists
+         
+         */
+        
+        
+        
+        let SLurl = NSURL(string: "http://54.191.40.200:50001/b1s/v1/Login")
+        
+        let request:NSMutableURLRequest = NSMutableURLRequest(URL:SLurl!)
+        
+        request.HTTPMethod = "POST"
+        
+        request.HTTPShouldHandleCookies=true //capture session ID
+        
+        let bodyData = "{\"UserName\":\"manager\", \"Password\":\"1234\", \"CompanyDB\":\"SBODEMOUS\"}"
+        
+        var stringForHandleAction = String()
+        //handleActionWithIdentifier(stringForHandleAction, forRemoteNotification: <#T##[NSObject : AnyObject]#>)
+        
+        
+        
+        request.HTTPBody = bodyData.dataUsingEncoding(NSUTF8StringEncoding);
+        
+        var approvalLogon = NSString()
+        
+        
+        /*
+         
+         * After logging on need to build payload body to approve the draft
+         
+         * Approval will be done in separate function
+         
+         */
+        
+        
+        //let request = NSMutableURLRequest(URL: NSURL(string: "http://54.191.40.200:50001/b1s/v1/Login")!)
+        request.HTTPMethod = "POST"
+        let postString = "{\"UserName\":\"manager\", \"Password\":\"1234\", \"CompanyDB\":\"SBODEMOUS\"}"
+        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
+            data, response, error in
+            
+            if error != nil {
+                print("error=\(error)")
+                return
+            }
+            
+            
+            
+            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            self.ExecuteReject(request)
+        }
+        task.resume()
+        
+    }//func PressReject()
+    
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         
@@ -198,7 +268,7 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             
         {
             
-            SLurl = NSURL(string: "http://54.191.40.200:50001/b1s/v1/Drafts(112)?$select=CardName,DocTotal,DiscountPercent")!
+            SLurl = NSURL(string: "http://54.191.40.200:50001/b1s/v1/Drafts(235)?$select=CardName,DocTotal,DiscountPercent")!
             //CardNameLabel.setText(MyDraft.draft as String)
         }else
             
@@ -651,11 +721,6 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     func ExecuteApproval(request:NSMutableURLRequest)
         
     {
-        
-        
-        
-        
-  
   // -Old Logon method depeciated      var bodyData = "{\n\"ApprovalRequest\": { \n\"Code\":15,\n\"ObjectType\":\"112\",\n\"IsDraft\":\"Y\",\n\"ObjectEntry\": 16,\n\"Status\": \"arsApproved\",\n\"Remarks\": \"ppp\",\n\"CurrentStage\": 7,\n\"OriginatorID\": 19,\n\"ApprovalRequestLines\": [\n{\n\"StageCode\": 7,\n\"UserID\": 1,\n\"Status\": \"arsApproved\",\n\"Remarks\": \"null\"\n}\n],\n\"ApprovalRequestDecisions\": [\n{\n\"ApproverUserName\": \"manager\",\n\"ApproverPassword\": \"1234\",\n\"Status\": \"ardApproved\",\n\"Remarks\": \"Approved and go ahead!\"\n}\n]\n}\n}"
         
        let postString = "{\n\"ApprovalRequest\": { \n\"Code\":15,\n\"ObjectType\":\"112\",\n\"IsDraft\":\"Y\",\n\"ObjectEntry\": 16,\n\"Status\": \"arsApproved\",\n\"Remarks\": \"ppp\",\n\"CurrentStage\": 7,\n\"OriginatorID\": 19,\n\"ApprovalRequestLines\": [\n{\n\"StageCode\": 7,\n\"UserID\": 1,\n\"Status\": \"arsApproved\",\n\"Remarks\": \"null\"\n}\n],\n\"ApprovalRequestDecisions\": [\n{\n\"ApproverUserName\": \"manager\",\n\"ApproverPassword\": \"1234\",\n\"Status\": \"ardApproved\",\n\"Remarks\": \"Approved and go ahead!\"\n}\n]\n}\n}"
@@ -712,6 +777,65 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         
     } //close ExecuteApproval
 
+    func ExecuteReject(request:NSMutableURLRequest)
+        
+    {
+        let postString = "{\n\"ApprovalRequest\": { \n\"Code\":15,\n\"ObjectType\":\"112\",\n\"IsDraft\":\"Y\",\n\"ObjectEntry\": 16,\n\"Status\": \"arsNotApproved\",\n\"Remarks\": \"ppp\",\n\"CurrentStage\": 7,\n\"OriginatorID\": 19,\n\"ApprovalRequestLines\": [\n{\n\"StageCode\": 7,\n\"UserID\": 1,\n\"Status\": \"arsNotApproved\",\n\"Remarks\": \"null\"\n}\n],\n\"ApprovalRequestDecisions\": [\n{\n\"ApproverUserName\": \"manager\",\n\"ApproverPassword\": \"1234\",\n\"Status\": \"ardApproved\",\n\"Remarks\": \"Approved and go ahead!\"\n}\n]\n}\n}"
+
+        
+        
+        var SLurl = NSURL(string: "\(SL)ApprovalRequestsService_UpdateRequest")
+        //var bodyData2 = "{\n\t\"ApprovalRequest\": { \n\t\"Code\":15,\n\t\"ObjectType\":\"112\",\n\t\"IsDraft\":\"Y\",\n\t\"ObjectEntry\": 16,\n\t\"Status\": \"arsApproved\",\n\t\"Remarks\": \"ppp\",\n\t\"CurrentStage\": 7,\n\t\"OriginatorID\": 19,\n\t\"ApprovalRequestLines\": [\n\t{\n\t\"StageCode\": 7,\n\t\"UserID\": 1,\n\t\"Status\": \"arsApproved\",\n\t\"Remarks\": \"ppp\"\n}\n],\n\"ApprovalRequestDecisions\": [\n{\n\"ApproverUserName\": \"manager\",\n\"ApproverPassword\": \"1234\",\n\"Status\": \"ardApproved\",\n\"Remarks\": \"Approved and go ahead!\"\n}\n]\n}\n}"
+        
+        
+        
+        let request = NSMutableURLRequest(URL: NSURL(string: "\(SL)ApprovalRequestsService_UpdateRequest")!)
+        var approvalStatus = NSData()
+        
+        var serviceLayerResult = NSString()
+        
+        //let request:NSMutableURLRequest = NSMutableURLRequest(URL:SLurl!)
+        
+        request.HTTPMethod="POST"
+        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
+        
+        
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
+            data, response, error in
+            
+            if error != nil {
+                print("error=\(error)")
+                return
+            }
+            
+            let responseString = (response)?.copy()
+            let httpResponse = response as! NSHTTPURLResponse
+            
+            if httpResponse.statusCode == 204
+                
+            {
+                
+                
+                self.showPopup(2)
+                
+                
+                
+                
+            } else {
+                
+                
+                self.showPopup(1)
+                
+            }//close if
+            
+            
+        }
+        task.resume()
+        
+
+        
+        
+    }//OrderRejection
 
     
 
@@ -737,6 +861,11 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         } else if message == 1 {
             presentAlertControllerWithTitle("Order Approval failed", message: "", preferredStyle: .ActionSheet, actions: [action1])
             
+        }else if message == 2 {
+            presentAlertControllerWithTitle("Order Cancelled", message: "", preferredStyle: .ActionSheet, actions: [action1])
+            
+        }else if message == 3 {
+            presentAlertControllerWithTitle("Order Cancellation failed", message: "", preferredStyle: .ActionSheet, actions: [action1])
         }
         
         

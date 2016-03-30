@@ -3,7 +3,7 @@
 //  B1Summit2016Watch Extension
 //
 //  Created by Speidel, Duncan on 11/5/15.
-//  Copyright © 2015 Li, Yatsea. All rights reserved.
+//  Copyright © 2016 Speidel, Duncan. All rights reserved.
 //
 
 import WatchKit
@@ -50,12 +50,15 @@ class NotificationController: WKUserNotificationInterfaceController {
         //
         // After populating your dynamic notification interface call the completion block.
  
-        
+/*commenting out to test if code not required switching to function in Interface Controller
         if let remoteaps:NSDictionary = remoteNotification["aps"] as? NSDictionary{
             if let remoteAlert:NSDictionary = remoteaps["alert"] as? NSDictionary{
                 handleNotification( remoteAlert );
             }
         }
+        
+        
+End InterfaceController code comment */
         
         let interface = WKUserNotificationInterfaceType.Default
         

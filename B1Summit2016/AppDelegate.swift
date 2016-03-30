@@ -3,7 +3,7 @@
 //  B1Summit2016
 //
 //  Created by SAP on 9/30/15.
-//  Copyright © 2015 Li, Yatsea. All rights reserved.
+//  Copyright © 2016 Speidel, Duncan. All rights reserved.
 // Watch version
 
 import UIKit
