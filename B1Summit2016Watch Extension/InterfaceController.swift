@@ -43,10 +43,10 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
     @IBOutlet weak var SalesPersonLabel: WKInterfaceLabel!
     
     @IBAction func PressApprove(sender: AnyObject) {
- 
- 
+
+    
         let SLurl = NSURL(string: "http://54.191.40.200:50001/b1s/v1/Login")
-        
+
         let request:NSMutableURLRequest = NSMutableURLRequest(URL:SLurl!)
         
         request.HTTPMethod = "POST"
@@ -54,30 +54,13 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         request.HTTPShouldHandleCookies=true //capture session ID
         
         let bodyData = "{\"UserName\":\"manager\", \"Password\":\"1234\", \"CompanyDB\":\"SBODEMOUS\"}"
-        
-        var stringForHandleAction = String()
-        //handleActionWithIdentifier(stringForHandleAction, forRemoteNotification: <#T##[NSObject : AnyObject]#>)
-        
-        
-        
         request.HTTPBody = bodyData.dataUsingEncoding(NSUTF8StringEncoding);
         
         var approvalLogon = NSString()
-        
-        
-        /*
-        
-        * After logging on need to build payload body to approve the draft
-        
-        * Approval will be done in separate function
-        
-        */
-        
-        
-        //let request = NSMutableURLRequest(URL: NSURL(string: "http://54.191.40.200:50001/b1s/v1/Login")!)
         request.HTTPMethod = "POST"
         let postString = "{\"UserName\":\"manager\", \"Password\":\"1234\", \"CompanyDB\":\"SBODEMOUS\"}"
         request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
+      
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
             data, response, error in
             
@@ -111,26 +94,10 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
         
         let bodyData = "{\"UserName\":\"manager\", \"Password\":\"1234\", \"CompanyDB\":\"SBODEMOUS\"}"
         
-        var stringForHandleAction = String()
-        //handleActionWithIdentifier(stringForHandleAction, forRemoteNotification: <#T##[NSObject : AnyObject]#>)
-        
-        
-        
         request.HTTPBody = bodyData.dataUsingEncoding(NSUTF8StringEncoding);
         
         var approvalLogon = NSString()
-        
-        
-        /*
-         
-         * After logging on need to build payload body to approve the draft
-         
-         * Approval will be done in separate function
-         
-         */
-        
-        
-        //let request = NSMutableURLRequest(URL: NSURL(string: "http://54.191.40.200:50001/b1s/v1/Login")!)
+
         request.HTTPMethod = "POST"
         let postString = "{\"UserName\":\"manager\", \"Password\":\"1234\", \"CompanyDB\":\"SBODEMOUS\"}"
         request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
@@ -160,8 +127,8 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             
         }
         self.LogonServiceLayer()
-        
-        
+    
+    
     }//awakeWithContext
    
     override func willActivate() {
@@ -173,11 +140,12 @@ class InterfaceController: WKInterfaceController, WCSessionDelegate {
             watchSession!.delegate = self
             watchSession!.activateSession()
         }
-       
-    self.LogonServiceLayer()
-   
-    }//willActivate
     
+    
+        self.LogonServiceLayer()
+    
+    }//willActivate
+
     func GetDraftDetails(request:NSMutableURLRequest) {
         
         /*
